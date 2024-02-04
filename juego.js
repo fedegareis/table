@@ -1,19 +1,5 @@
-const tabla = document.getElementById("y");
-const limitey = 7;
-const limitex = 6;
-const marco = [
-    [,,,,,],
-    [,,,,,],
-    [,,,,,],
-    [,,,,,],
-    [,,,,,],
-    [,,,,,],
-    [,,,,,]
-];
-
-
-
-  function tablero() {
+function tablero() {
+    
     for (let i = 0; i <= limitey; i++) {
         const lineax = document.createElement("div");
         lineax.classList.add("lineas", "lineasx"); // Agrega clases a la línea horizontal
@@ -28,6 +14,4 @@ const marco = [
         tabla.appendChild(lineay);
     }
 }
-tablero();
-
 
