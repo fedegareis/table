@@ -7,12 +7,16 @@ body{
     
 }
 .table{
+    display: grid; /* Aplicar CSS Grid */
+    grid-template-rows: auto; /* Definir 3 filas */
+    grid-template-columns: repeat(6, 1fr); /* Definir 3 columnas */
     position: relative;
     background-color: rgba(45, 45, 45, 0.7) ;
     height: 800px;
     width: 700px;
     box-shadow: 10px 15px 18px rgba(0, 0, 0, 0.1); 
 }
+
 .lineas {
    position: absolute; 
     background-color: black;
@@ -33,8 +37,18 @@ body{
     background-color: blueviolet;
     text-align: center;
 }
-.fichas{
+.espacio{
+    position:relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     
+}
+.fichas{
+    position:absolute;
+    display: flex;
+    width: 80px;
+    height: 80px;
     background-color: red;
     border-radius: 50%;
 }
