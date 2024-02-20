@@ -68,7 +68,7 @@ function botones(){
 function juego(){
     
         var band = false ;
-        var pos;
+        var pos ;
         botonera.addEventListener('click',function(event){
         const botonpress = event.target;
         if(botonpress.matches('.boton')){
@@ -87,6 +87,7 @@ function juego(){
                     if(band){
                         const ficha = document.createElement("div");
                         ficha.classList.add("fichas");
+                        if(tablemove[pos][0] == 0){
                         if(contador %2 == 0 ){
                             ficha.style.backgroundColor = "yellow";
                             const celda = tabla.querySelector(`.espacio[data-fila="${pos}"][data-columna="${0}"]`);
@@ -102,34 +103,43 @@ function juego(){
                     }
                     else{
                         window.alert("Ya no existen casillas libres en esta columna!");
+                        contador--;
                     }
+                }
                 break;
             case "1":         
             for(let i = limitex; i >= 0 ;i--){
+             
+            
                 if(tablemove[i][1] == 0){
                     pos = i;
                     band = true;
                     break;
+                   
                 }
                 
             }
             if(band){
+                
                 const ficha = document.createElement("div");
-                ficha.classList.add("fichas"); 
+                ficha.classList.add("fichas");
+                if(tablemove[pos][1] == 0){ 
                 if(contador %2 == 0 ){
                     ficha.style.backgroundColor = "yellow";
-                    const celda = tabla.querySelector(`.espacio[data-fila="${pos}"][data-columna="${0}"]`);
+                    const celda = tabla.querySelector(`.espacio[data-fila="${pos}"][data-columna="${1}"]`);
                     celda.appendChild(ficha);
-                    tablemove[pos][0] = 2;
+                    tablemove[pos][1] = 2;
                 }
                 else{
-                    const celda = tabla.querySelector(`.espacio[data-fila="${pos}"][data-columna="${0}"]`);
+                    const celda = tabla.querySelector(`.espacio[data-fila="${pos}"][data-columna="${1}"]`);
                     celda.appendChild(ficha);
-                    tablemove[pos][0] = 1;
+                    tablemove[pos][1] = 1;
                 }
-            }
-            else{
-                window.alert("Ya no existen casillas libres en esta columna!");
+                }
+                    else{
+                    window.alert("Ya no existen casillas libres en esta columna!");
+                    contador--;
+                }
             }
                 break;
             case "2":
@@ -143,22 +153,26 @@ function juego(){
                 }
                 if(band){
                     const ficha = document.createElement("div");
-                    ficha.classList.add("fichas"); 
+                    ficha.classList.add("fichas");
+                    if(tablemove[pos][2] == 0){ 
                     if(contador %2 == 0 ){
                         ficha.style.backgroundColor = "yellow";
-                        const celda = tabla.querySelector(`.espacio[data-fila="${pos}"][data-columna="${0}"]`);
+                        const celda = tabla.querySelector(`.espacio[data-fila="${pos}"][data-columna="${2}"]`);
                         celda.appendChild(ficha);
-                        tablemove[pos][0] = 2;
+                        tablemove[pos][2] = 2;
                     }
                     else{
-                        const celda = tabla.querySelector(`.espacio[data-fila="${pos}"][data-columna="${0}"]`);
+                        const celda = tabla.querySelector(`.espacio[data-fila="${pos}"][data-columna="${2}"]`);
                         celda.appendChild(ficha);
-                        tablemove[pos][0] = 1;
+                        tablemove[pos][2] = 1;
                     }
                 }
+                
                 else{
                     window.alert("Ya no existen casillas libres en esta columna!");
+                    contador--;
                 }
+            }
                 break;
             case "3":
                 for(let i = limitex; i >= 0 ;i--){
@@ -172,20 +186,24 @@ function juego(){
                 if(band){
                     const ficha = document.createElement("div");
                     ficha.classList.add("fichas"); 
+                    if(tablemove[pos][3] == 0){
                     if(contador %2 == 0 ){
                         ficha.style.backgroundColor = "yellow";
-                        const celda = tabla.querySelector(`.espacio[data-fila="${pos}"][data-columna="${0}"]`);
+                        const celda = tabla.querySelector(`.espacio[data-fila="${pos}"][data-columna="${3}"]`);
                         celda.appendChild(ficha);
-                        tablemove[pos][0] = 2;
+                        tablemove[pos][3] = 2;
                     }
                     else{
-                        const celda = tabla.querySelector(`.espacio[data-fila="${pos}"][data-columna="${0}"]`);
+                        const celda = tabla.querySelector(`.espacio[data-fila="${pos}"][data-columna="${3}"]`);
                         celda.appendChild(ficha);
-                        tablemove[pos][0] = 1;
+                        tablemove[pos][3] = 1;
                     }
                 }
+                
                 else{
                     window.alert("Ya no existen casillas libres en esta columna!");
+                    contador--;
+                }
                 }
                 break;
             case "4":
@@ -200,21 +218,25 @@ function juego(){
                 if(band){
                     const ficha = document.createElement("div");
                     ficha.classList.add("fichas"); 
+                    if(tablemove[pos][4] == 0){
                     if(contador %2 == 0 ){
                         ficha.style.backgroundColor = "yellow";
-                        const celda = tabla.querySelector(`.espacio[data-fila="${pos}"][data-columna="${0}"]`);
+                        const celda = tabla.querySelector(`.espacio[data-fila="${pos}"][data-columna="${4}"]`);
                         celda.appendChild(ficha);
-                        tablemove[pos][0] = 2;
+                        tablemove[pos][4] = 2;
                     }
                     else{
-                        const celda = tabla.querySelector(`.espacio[data-fila="${pos}"][data-columna="${0}"]`);
+                        const celda = tabla.querySelector(`.espacio[data-fila="${pos}"][data-columna="${4}"]`);
                         celda.appendChild(ficha);
-                        tablemove[pos][0] = 1;
+                        tablemove[pos][4] = 1;
                     }
                 }
+                
                 else{
                     window.alert("Ya no existen casillas libres en esta columna!");
                 }
+                }
+            
                 break;
             case "5":
                 for(let i = limitex; i >= 0 ;i--){
@@ -228,21 +250,25 @@ function juego(){
                 if(band){
                     const ficha = document.createElement("div");
                     ficha.classList.add("fichas"); 
+                    if(tablemove[pos][5] == 0){
                     if(contador %2 == 0 ){
                         ficha.style.backgroundColor = "yellow";
-                        const celda = tabla.querySelector(`.espacio[data-fila="${pos}"][data-columna="${0}"]`);
+                        const celda = tabla.querySelector(`.espacio[data-fila="${pos}"][data-columna="${5}"]`);
                         celda.appendChild(ficha);
-                        tablemove[pos][0] = 2;
+                        tablemove[pos][5] = 2;
                     }
                     else{
-                        const celda = tabla.querySelector(`.espacio[data-fila="${pos}"][data-columna="${0}"]`);
+                        const celda = tabla.querySelector(`.espacio[data-fila="${pos}"][data-columna="${5}"]`);
                         celda.appendChild(ficha);
-                        tablemove[pos][0] = 1;
+                        tablemove[pos][5] = 1;
                     }
                 }
+                
                 else{
                     window.alert("Ya no existen casillas libres en esta columna!");
+                    contador--;
                 }
+            }
                 break;
              }
             }
