@@ -1,15 +1,8 @@
 const tabla = document.getElementById("y");
 const botonera = document.getElementById("button");
-var contador = 0;
-
-const colores = {
-    player1: "red",
-    player2: "yellow",
-    change: function(){
-
-    }
-};
-
+const player1 = 1;
+const player2 = 2;
+const contador = 0;
 const limitey = 7;
 const limitex = 6;
 const tablemove = [
@@ -66,9 +59,10 @@ function botones(){
 
 
 function juego(){
-    
-        var band = false ;
-        var pos ;
+        const ganador1 = verificar(tablemove,1);
+        const ganador2 = verificar(tablemove,2);
+        let band = false ;
+        let pos ;
         botonera.addEventListener('click',function(event){
         const botonpress = event.target;
         if(botonpress.matches('.boton')){
@@ -105,6 +99,15 @@ function juego(){
                         window.alert("Ya no existen casillas libres en esta columna!");
                         contador--;
                     }
+                    if(ganador1){
+                        window.alert("el jugador 1 ha ganado!");
+                    }
+                    else if(ganador2){
+                            window.alert("el jugador 1 ha ganado!");
+                        
+                    }
+                
+
                 }
                 break;
             case "1":         
@@ -275,6 +278,42 @@ function juego(){
         });
     
 }
+function verificar(tablero,jugador){
+        // Verificar filas
+        for (let fila = 0; fila < tablero.length; fila++) {
+            let contador = 0;
+            for (let columna = 0; columna < tablero[fila].length; columna++) {
+                if (tablero[fila][columna] === jugador) {
+                    contador++;
+                    if (contador === 3) {
+                        return true; // El jugador ganó
+                    }
+                } else {
+                    contador = 0; // Reiniciar el contador si el número no es del jugador actual
+                }
+            }
+        }
+    
+        // Verificar columnas
+        for (let columna = 0; columna < tablero[0].length; columna++) {
+            let contador = 0;
+            for (let fila = 0; fila < tablero.length; fila++) {
+                if (tablero[fila][columna] === jugador) {
+                    contador++;
+                    if (contador === 3) {
+                        return true; // El jugador ganó
+                    }
+                } else {
+                    contador = 0; // Reiniciar el contador si el número no es del jugador actual
+                }
+            }
+        }
+    
+        // No se encontraron tres números consecutivos en ninguna dirección
+        return false;
+    }
+
+
 botones();
 tablero();
 juego();
