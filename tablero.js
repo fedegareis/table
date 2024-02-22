@@ -1,4 +1,5 @@
 const tabla = document.getElementById("y");
+
 const botonera = document.getElementById("button");
 const player1 = 1;
 const player2 = 2;
@@ -59,8 +60,7 @@ function botones(){
 
 
 function juego(){
-        const ganador1 = verificar(tablemove,1);
-        const ganador2 = verificar(tablemove,2);
+        
         let band = false ;
         let pos ;
         botonera.addEventListener('click',function(event){
@@ -99,15 +99,7 @@ function juego(){
                         window.alert("Ya no existen casillas libres en esta columna!");
                         contador--;
                     }
-                    if(ganador1){
-                        window.alert("el jugador 1 ha ganado!");
-                    }
-                    else if(ganador2){
-                            window.alert("el jugador 1 ha ganado!");
-                        
-                    }
                 
-
                 }
                 break;
             case "1":         
@@ -312,6 +304,8 @@ function verificar(tablero,jugador){
         // No se encontraron tres números consecutivos en ninguna dirección
         return false;
     }
+
+
 
 
 botones();
