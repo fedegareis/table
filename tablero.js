@@ -2,7 +2,7 @@ const tabla = document.getElementById("y");
 const botonera = document.getElementById("button");
 const player1 = 1;
 const player2 = 2;
-const contador = 0;
+var contador = 0;
 const limitey = 7;
 const limitex = 6;
 const tablemove = [
@@ -99,14 +99,6 @@ function juego(){
                         window.alert("Ya no existen casillas libres en esta columna!");
                         contador--;
                     }
-                    if(ganador1){
-                        window.alert("el jugador 1 ha ganado!");
-                    }
-                    else if(ganador2){
-                            window.alert("el jugador 1 ha ganado!");
-                        
-                    }
-                
 
                 }
                 break;
@@ -275,36 +267,44 @@ function juego(){
                 break;
              }
             }
+           
         });
+        if(ganador1){
+            window.alert("el jugador 1 ha ganado!");
+        }
+        else if(ganador2){
+                window.alert("el jugador 1 ha ganado!");
+            
+        }
     
 }
 function verificar(tablero,jugador){
         // Verificar filas
         for (let fila = 0; fila < tablero.length; fila++) {
-            let contador = 0;
+            let conta = 0;
             for (let columna = 0; columna < tablero[fila].length; columna++) {
                 if (tablero[fila][columna] === jugador) {
-                    contador++;
-                    if (contador === 3) {
+                    conta++;
+                    if (conta === 3) {
                         return true; // El jugador ganó
                     }
                 } else {
-                    contador = 0; // Reiniciar el contador si el número no es del jugador actual
+                    conta = 0; // Reiniciar el contador si el número no es del jugador actual
                 }
             }
         }
     
         // Verificar columnas
         for (let columna = 0; columna < tablero[0].length; columna++) {
-            let contador = 0;
+            let conta = 0;
             for (let fila = 0; fila < tablero.length; fila++) {
                 if (tablero[fila][columna] === jugador) {
-                    contador++;
-                    if (contador === 3) {
+                    conta++;
+                    if (conta === 3) {
                         return true; // El jugador ganó
                     }
                 } else {
-                    contador = 0; // Reiniciar el contador si el número no es del jugador actual
+                    conta = 0; // Reiniciar el contador si el número no es del jugador actual
                 }
             }
         }
