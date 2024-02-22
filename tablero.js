@@ -60,14 +60,22 @@ function botones(){
 
 
 function juego(){
+<<<<<<< HEAD
         
+=======
+       
+>>>>>>> 199463509a293033b01a0b990376a7960386d3b1
         let band = false ;
         let pos ;
+        let win = 0;
+        
         botonera.addEventListener('click',function(event){
-        const botonpress = event.target;
+        const botonpress = event.target;  
+        
         if(botonpress.matches('.boton')){
         const valorboton = botonpress.dataset.valor;
         contador++;
+       
         switch(valorboton){
             case "0":
                     for(let i = limitex; i >= 0 ;i--){
@@ -271,15 +279,18 @@ function juego(){
                 break;
              }
             }
-           
-        });
-        if(ganador1){
-            window.alert("el jugador 1 ha ganado!");
-        }
-        else if(ganador2){
+            const ganador1 = verificar(tablemove,1);
+            const ganador2 = verificar(tablemove,2);
+            if(ganador1){
                 window.alert("el jugador 1 ha ganado!");
-            
-        }
+                win ++;
+            }
+            else if(ganador2){
+                    window.alert("el jugador 1 ha ganado!");
+                win++;
+            }
+        });
+      
     
 }
 function verificar(tablero,jugador){
