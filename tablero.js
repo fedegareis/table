@@ -1,6 +1,7 @@
 const tabla = document.getElementById("y");
-
 const botonera = document.getElementById("button");
+const botoninit = document.getElementById("incio");
+var band = 0;
 var player1 = 0;
 var player2 = 0;
 var contador = 0;
@@ -315,19 +316,25 @@ function verificar(tablero,jugador){
     
         // No se encontraron tres números consecutivos en ninguna dirección
         return false;
+}
+function inicio(){
+  
+    if(band === 0){
+    botoninit.textContent = ('COMENZAR');
+    botoninit.addEventListener('click',function(event){
+        const botinit = event.target;
+        band++;  
+        if(botinit.matches('.boton')){
+            botones();
+            tablero();
+            juego();
+            
+        }});}
+       
     }
 
 
-function Attr(){
-    botones();
-    tablero();
-    juego();
 
-}
 
-if(player1 !== 0 || player2 !== 0){
-     window.alert("fin del juego")
-}
-else{
-   Attr();
-}
+inicio();
+
