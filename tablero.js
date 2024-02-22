@@ -1,8 +1,8 @@
 const tabla = document.getElementById("y");
 
 const botonera = document.getElementById("button");
-const player1 = 1;
-const player2 = 2;
+var player1 = 0;
+var player2 = 0;
 var contador = 0;
 const limitey = 7;
 const limitex = 6;
@@ -15,9 +15,6 @@ const tablemove = [
     [0,0,0,0,0,0],
     [0,0,0,0,0,0]
 ];
-function check(){
-    
-}
 
 function botones(){
     for(let i = 0; i< limitex;i++){
@@ -60,15 +57,9 @@ function botones(){
 
 
 function juego(){
-<<<<<<< HEAD
-        
-=======
-       
->>>>>>> 199463509a293033b01a0b990376a7960386d3b1
+
         let band = false ;
         let pos ;
-        let win = 0;
-        
         botonera.addEventListener('click',function(event){
         const botonpress = event.target;  
         
@@ -107,11 +98,7 @@ function juego(){
                         window.alert("Ya no existen casillas libres en esta columna!");
                         contador--;
                     }
-<<<<<<< HEAD
-                
-=======
 
->>>>>>> 61b0d1a90431497559a16e9e9651b7cbf9dc47e8
                 }
                 break;
             case "1":         
@@ -282,13 +269,15 @@ function juego(){
             const ganador1 = verificar(tablemove,1);
             const ganador2 = verificar(tablemove,2);
             if(ganador1){
-                window.alert("el jugador 1 ha ganado!");
-                win ++;
+                player1 ++;
+                window.alert(player1);
             }
-            else if(ganador2){
-                    window.alert("el jugador 1 ha ganado!");
-                win++;
-            }
+            else 
+                if(ganador2){
+                player2++;
+                window.alert(player2);
+            
+        }
         });
       
     
@@ -329,10 +318,16 @@ function verificar(tablero,jugador){
     }
 
 
+function Attr(){
+    botones();
+    tablero();
+    juego();
 
+}
 
-botones();
-tablero();
-juego();
-
-
+if(player1 !== 0 || player2 !== 0){
+     window.alert("fin del juego")
+}
+else{
+   Attr();
+}
