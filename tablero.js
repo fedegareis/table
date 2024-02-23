@@ -319,19 +319,34 @@ function verificar(tablero,jugador){
 }
 function inicio(){
   
-    if(band === 0){
     botoninit.textContent = ('COMENZAR');
     botoninit.addEventListener('click',function(event){
-        const botinit = event.target;
-        band++;  
+    const botinit = event.target;
+        
+    if (band === 0){
         if(botinit.matches('.boton')){
-            botones();
+             band++; 
+             botones();
             tablero();
             juego();
-            
-        }});}
-       
+             botoninit.textContent = ("REINICIAR");
+        }
     }
+    else{
+        botoninit.textContent = ('COMENZAR'); 
+        band--;
+        if(botoninit.matches('.boton')){
+        for(let i=0; i < limitex ;i++){
+            for(let j=0; j< limitey;j++){
+                tablemove[i][j] = 0;
+            }
+        }
+        }
+
+        }
+});
+        
+    }    
 
 
 
