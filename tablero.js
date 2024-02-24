@@ -5,6 +5,7 @@ var band = 0;
 var player1 = 0;
 var player2 = 0;
 var contador = 0;
+var contb = 0;
 const limitey = 7;
 const limitex = 6;
 const tablemove = [
@@ -18,12 +19,15 @@ const tablemove = [
 ];
 
 function botones(){
+    if(contb != limitex){
     for(let i = 0; i< limitex;i++){
         const boton = document.createElement("BUTTON");
         boton.classList.add("boton");
         boton.textContent =('PRESS');
         boton.dataset.valor = i;
         botonera.appendChild(boton);
+        contb++;
+        }
     }
 }
 
@@ -42,6 +46,10 @@ function botones(){
         lineax.style.left = `${j * (100 / limitex)}%`; // Calcula la posición horizontal
         tabla.appendChild(lineax);
     }
+    
+} 
+
+function espacios (){
     for (let i = 0; i < limitey; i++) {
         for (let j = 0; j < limitex; j++) {
             const fila = i;
@@ -53,9 +61,8 @@ function botones(){
             console.log(`espacio fila:${fila}${window.scrollY}, columna: ${columna}${window.scrollX}`);
             tabla.appendChild(espacioDiv);
         }
-    }
+    } 
 }
-
 
 function juego(){
 
@@ -325,26 +332,33 @@ function inicio(){
         
     if (band === 0){
         if(botinit.matches('.boton')){
-             band++; 
-             botones();
+            band++; 
+            botones();
             tablero();
+            espacios();
             juego();
              botoninit.textContent = ("REINICIAR");
         }
     }
     else{
-        botoninit.textContent = ('COMENZAR'); 
         band--;
         if(botoninit.matches('.boton')){
-        for(let i=0; i < limitex ;i++){
-            for(let j=0; j< limitey;j++){
+        for(let i=0; i < limitey ;i++){
+            for(let j=0; j< limitex;j++){
                 tablemove[i][j] = 0;
+                const celda = tabla.querySelector(`.espacio[data-fila="${i}"][data-columna="${j}"]`);
+                celda.innerHTML ='';
+                console.log(celda);
+                band = 0;
+                player1 = 0;
+                player2 = 0;
+                contador = 0;
+                }
+              }
             }
-        }
-        }
 
         }
-});
+    });
         
     }    
 
