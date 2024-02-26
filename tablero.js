@@ -49,7 +49,13 @@ function botones(){
     
 } 
 
+
+function limpiarTablero() {
+    tabla.innerHTML = ''; // Elimina todos los elementos hijos de la tabla
+}
+
 function espacios (){
+    limpiarTablero();
     for (let i = 0; i < limitey; i++) {
         for (let j = 0; j < limitex; j++) {
             const fila = i;
@@ -58,7 +64,8 @@ function espacios (){
             espacioDiv.classList.add("espacio");
             espacioDiv.dataset.fila = i;
             espacioDiv.dataset.columna = j;
-            console.log(`espacio fila:${fila}${window.scrollY}, columna: ${columna}${window.scrollX}`);
+            //console.log(`espacio fila:${fila}${window.scrollY}, columna: ${columna}${window.scrollX}`);
+            //ver en que posicion se esta creando la grilla.
             tabla.appendChild(espacioDiv);
         }
     } 
@@ -332,22 +339,25 @@ function inicio(){
         
     if (band === 0){
         if(botinit.matches('.boton')){
-            band++; 
+            
             botones();
             tablero();
-            espacios();
+            espacios();   
             juego();
+            band++; 
              botoninit.textContent = ("REINICIAR");
         }
     }
     else{
-        band--;
+        
         if(botoninit.matches('.boton')){
+        espacios();
         for(let i=0; i < limitey ;i++){
             for(let j=0; j< limitex;j++){
                 tablemove[i][j] = 0;
                 const celda = tabla.querySelector(`.espacio[data-fila="${i}"][data-columna="${j}"]`);
                 celda.innerHTML ='';
+                
                 console.log(celda);
                 band = 0;
                 player1 = 0;
