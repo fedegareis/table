@@ -50,12 +50,8 @@ function botones(){
 } 
 
 
-function limpiarTablero() {
-    tabla.innerHTML = ''; // Elimina todos los elementos hijos de la tabla
-}
-
 function espacios (){
-    limpiarTablero();
+    
     for (let i = 0; i < limitey; i++) {
         for (let j = 0; j < limitex; j++) {
             const fila = i;
@@ -351,20 +347,28 @@ function inicio(){
     else{
         
         if(botoninit.matches('.boton')){
-        espacios();
+            const elemespacios = document.querySelectorAll('.espacios');
+            elemespacios.forEach(espacio => espacio.parentNode.removeChild(espacio));
+            
         for(let i=0; i < limitey ;i++){
             for(let j=0; j< limitex;j++){
                 tablemove[i][j] = 0;
                 const celda = tabla.querySelector(`.espacio[data-fila="${i}"][data-columna="${j}"]`);
-                celda.innerHTML ='';
-                
+                if (celda) {
+                    celda.parentNode.removeChild(celda);
+                }
+                // else {    console.error("No se encontró ninguna celda para eliminar");}
+                //celda.forEach(celdas => celdas.parentNode.removeChild(celdas)); esto es en caso de estar fuera del for y que sea queryselectorall
+
                 console.log(celda);
-                band = 0;
+                
+                }
+              }
+              
                 player1 = 0;
                 player2 = 0;
                 contador = 0;
-                }
-              }
+                espacios();
             }
 
         }
