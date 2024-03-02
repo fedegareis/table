@@ -21,8 +21,13 @@ body{
     width: 10px;
     height: 10px;
     border-radius: 50%;
+<<<<<<< HEAD
 }
 
+=======
+    
+}
+>>>>>>> 748480757ba3acc34c615eaedd074666e3a40db4
 .lineas {
    position: absolute; 
     background-color: black;

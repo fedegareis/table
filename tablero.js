@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 const tabla = document.getElementById("y");
 const botonera = document.getElementById("button");
 const botoninit = document.getElementById("incio");
@@ -397,3 +398,5 @@ function inicio(){
 
 inicio();
 
+=======
+>>>>>>> 748480757ba3acc34c615eaedd074666e3a40db4
