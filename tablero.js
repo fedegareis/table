@@ -17,6 +17,22 @@ const tablemove = [
     [0,0,0,0,0,0],
     [0,0,0,0,0,0]
 ];
+function papelitos() {
+    const colores = ['red', 'green', 'blue', 'yellow', 'orange', 'purple']; 
+    const papel = document.createElement('div');
+    papel.classList.add('papelito');
+    document.body.appendChild(papel);
+  
+    papel.style.left = Math.random() * window.innerWidth + 'px';
+    papel.style.animationDuration = Math.random() * 2 + 3 + 's';
+  
+    const randomColor = colores[Math.floor(Math.random() * colores.length)];
+    papel.style.backgroundColor = randomColor;
+  
+    setTimeout(() => {
+      papelito.style.top = window.innerHeight + 'px';
+    }, 10);
+  }
 
 function botones(){
     if(contb != limitex){
