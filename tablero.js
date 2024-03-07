@@ -1,6 +1,6 @@
 
 const tabla = document.getElementById("y");
-const botonera = document.getElementById("button");
+const botonera = document.getElementById("b");
 const botoninit = document.getElementById("incio");
 var band = 0;
 var player1 = 0;
@@ -36,7 +36,8 @@ function papelitos() {
     setTimeout(() => {
       papel.style.top = window.innerHeight + 'px';
     }, Math.random() * 2000 + 1000); console.log(papel);
-}   
+   }   
+       botonera.innerHTML = '';
   }
 
 function botones(){
@@ -303,16 +304,12 @@ function juego(){
             if(ganador1){
                 player1 ++;
                 papelitos();
-                const quitarBoton = document.getElementsById("button");
-                quitarBoton.forEach(quitar => quitar.parentNode.removeChild(quitar));
             }
             else 
                 if(ganador2){
                 player2++;
                 papelitos();
-                const quitarBoton = document.getElementsById("button");
-                quitarBoton.forEach(quitar => quitar.parentNode.removeChild(quitar));
-            
+           
         }
         });
       
@@ -394,11 +391,12 @@ function inicio(){
                 player1 = 0;
                 player2 = 0;
                 contador = 0;
+                contb = 0;
                 botones();
                 espacios();
                 
             }
-
+             
         }
     });
         
