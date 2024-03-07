@@ -21,13 +21,20 @@ body{
     width: 10px;
     height: 10px;
     border-radius: 50%;
-<<<<<<< HEAD
-}
-
-=======
+    animation: caida linear infinite;
     
 }
->>>>>>> 748480757ba3acc34c615eaedd074666e3a40db4
+@keyframes caida{
+    0%{
+        transform: translateY(-100vh);
+        opacity: 1;
+    }
+    100%{
+        transform: translateY((calc(100vh - 10px)));
+        opacity: 1;
+
+    }
+}
 .lineas {
    position: absolute; 
     background-color: black;

@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 const tabla = document.getElementById("y");
 const botonera = document.getElementById("button");
 const botoninit = document.getElementById("incio");
@@ -19,20 +19,24 @@ const tablemove = [
     [0,0,0,0,0,0]
 ];
 function papelitos() {
+    for(let i = 0 ; i<= 100;i++){
     const colores = ['red', 'green', 'blue', 'yellow', 'orange', 'purple']; 
     const papel = document.createElement('div');
-    papel.classList.add('papelito');
+   
+    papel.classList.add('papelitos');
     document.body.appendChild(papel);
   
-    papel.style.left = Math.random() * window.innerWidth + 'px';
+    papel.style.left = Math.random() *  (window.innerWidth - 10) + 'px';
+    papel.style.top = Math.random() *  window.innerHeight  + 'px';
     papel.style.animationDuration = Math.random() * 2 + 3 + 's';
   
     const randomColor = colores[Math.floor(Math.random() * colores.length)];
     papel.style.backgroundColor = randomColor;
   
     setTimeout(() => {
-      papelito.style.top = window.innerHeight + 'px';
-    }, 10);
+      papel.style.top = window.innerHeight + 'px';
+    }, Math.random() * 2000 + 1000); console.log(papel);
+}   
   }
 
 function botones(){
@@ -298,12 +302,16 @@ function juego(){
             const ganador2 = verificar(tablemove,2);
             if(ganador1){
                 player1 ++;
-                window.alert(player1);
+                papelitos();
+                const quitarBoton = document.getElementsById("button");
+                quitarBoton.forEach(quitar => quitar.parentNode.removeChild(quitar));
             }
             else 
                 if(ganador2){
                 player2++;
-                window.alert(player2);
+                papelitos();
+                const quitarBoton = document.getElementsById("button");
+                quitarBoton.forEach(quitar => quitar.parentNode.removeChild(quitar));
             
         }
         });
@@ -381,11 +389,14 @@ function inicio(){
                 
                 }
               }
-              
+                const limpiarPapel = document.querySelectorAll(".papelitos");
+                limpiarPapel.forEach(limpiar => limpiar.parentNode.removeChild(limpiar));
                 player1 = 0;
                 player2 = 0;
                 contador = 0;
+                botones();
                 espacios();
+                
             }
 
         }
@@ -398,5 +409,3 @@ function inicio(){
 
 inicio();
 
-=======
->>>>>>> 748480757ba3acc34c615eaedd074666e3a40db4
