@@ -18,6 +18,9 @@ const tablemove = [
     [0,0,0,0,0,0],
     [0,0,0,0,0,0]
 ];
+
+
+
 function papelitos() {
     for(let i = 0 ; i<= 100;i++){
     const colores = ['red', 'green', 'blue', 'yellow', 'orange', 'purple']; 
@@ -345,7 +348,27 @@ function verificar(tablero,jugador){
                 }
             }
         }
+        
+        for (let filas = 0; filas < tablero.length - 2; filas++) {
+            for (let columna = 0; columna < tablero[0].length - 2; columna++) {
+                if (tablero[filas][columna] === jugador &&
+                    tablero[filas + 1][columna + 1] === jugador &&
+                    tablero[filas + 2][columna + 2] === jugador) {
+                    return true;
+                }
+            }
+        }
     
+        // Verificar diagonales descendentes
+        for (let filas = 0; filas < tablero.length - 2; filas++) {
+            for (let columna = 2; columna < tablero[0].length; columna++) {
+                if (tablero[filas][columna] === jugador &&
+                    tablero[filas + 1][columna - 1] === jugador &&
+                    tablero[filas + 2][columna - 2] === jugador) {
+                    return true;
+                }
+            }
+        }
         // No se encontraron tres números consecutivos en ninguna dirección
         return false;
 }
@@ -364,6 +387,7 @@ function inicio(){
             juego();
             band++; 
              botoninit.textContent = ("REINICIAR");
+             tabla.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
     }
     else{
@@ -382,7 +406,7 @@ function inicio(){
                 // else {    console.error("No se encontró ninguna celda para eliminar");}
                 //celda.forEach(celdas => celdas.parentNode.removeChild(celdas)); esto es en caso de estar fuera del for y que sea queryselectorall
 
-                console.log(celda);
+                
                 
                 }
               }
@@ -392,8 +416,10 @@ function inicio(){
                 player2 = 0;
                 contador = 0;
                 contb = 0;
-                botones();
+                botonera.innerHTML='';
+                botones();// no se borran por el inner de los papelitos. hay que borrarlos de las dos maneras.
                 espacios();
+                tabla.scrollIntoView({ behavior: 'smooth', block: 'center' });
                 
             }
              
