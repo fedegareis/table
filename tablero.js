@@ -19,7 +19,30 @@ const tablemove = [
     [0,0,0,0,0,0]
 ];
 
+function registro(){
+    const regis = document.createElement('div');
+    regis.setAttribute('id','registro');
+    const jugador1 = document.createElement('div');
+    const text1 = document.createElement('p'); 
+    text1.textContent = "Nombre del Jugador 1: ";
+    const input1 = document.createElement('INPUT');
+    input1.setAttribute('type','text');
+    jugador1.appendChild(text1);
+    jugador1.appendChild(input1);
 
+    const jugador2 = document.createElement('div');
+    const text2 = document.createElement('p');
+    text2.textContent = "Nombre del jugador 2: ";
+    const input2 = document.createElement('INPUT');
+    input2.setAttribute('type','text');
+    jugador2.appendChild(text2);
+    jugador2.appendChild(input2);
+
+    regis.appendChild(jugador1);
+    regis.appendChild(jugador2);
+
+    tabla.appendChild(regis);
+}
 
 function papelitos() {
     for(let i = 0 ; i<= 100;i++){
@@ -325,7 +348,7 @@ function verificar(tablero,jugador){
             for (let columna = 0; columna < tablero[fila].length; columna++) {
                 if (tablero[fila][columna] === jugador) {
                     conta++;
-                    if (conta === 3) {
+                    if (conta === 4) {
                         return true; // El jugador ganó
                     }
                 } else {
@@ -340,7 +363,7 @@ function verificar(tablero,jugador){
             for (let fila = 0; fila < tablero.length; fila++) {
                 if (tablero[fila][columna] === jugador) {
                     conta++;
-                    if (conta === 3) {
+                    if (conta === 4) {
                         return true; // El jugador ganó
                     }
                 } else {
@@ -353,7 +376,8 @@ function verificar(tablero,jugador){
             for (let columna = 0; columna < tablero[0].length - 2; columna++) {
                 if (tablero[filas][columna] === jugador &&
                     tablero[filas + 1][columna + 1] === jugador &&
-                    tablero[filas + 2][columna + 2] === jugador) {
+                    tablero[filas + 2][columna + 2] === jugador &&
+                    tablero[filas + 3][columna + 3] === jugador) {
                     return true;
                 }
             }
@@ -364,7 +388,8 @@ function verificar(tablero,jugador){
             for (let columna = 2; columna < tablero[0].length; columna++) {
                 if (tablero[filas][columna] === jugador &&
                     tablero[filas + 1][columna - 1] === jugador &&
-                    tablero[filas + 2][columna - 2] === jugador) {
+                    tablero[filas + 2][columna - 2] === jugador &&
+                    tablero[filas + 3][columna - 3] === jugador) {
                     return true;
                 }
             }
@@ -373,14 +398,16 @@ function verificar(tablero,jugador){
         return false;
 }
 function inicio(){
-  
+    registro();    
     botoninit.textContent = ('COMENZAR');
     botoninit.addEventListener('click',function(event){
     const botinit = event.target;
         
     if (band === 0){
         if(botinit.matches('.boton')){
-            
+          //  const limpiarregis = document.getElementById('registro');
+            //tabla.parentNode.removeChild(limpiarregis);            
+           
             botones();
             tablero();
             espacios();   
@@ -388,6 +415,8 @@ function inicio(){
             band++; 
              botoninit.textContent = ("REINICIAR");
              tabla.scrollIntoView({ behavior: 'smooth', block: 'center' });
+             const limpiarregis = document.getElementById('registro');
+            tabla.parentNode.removeChild(limpiarregis); 
         }
     }
     else{
